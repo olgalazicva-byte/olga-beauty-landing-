@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&amp;family=Cormorant+Garamond:ital@1&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    :root{
+      --bg:#F8F6F2;
+      --card:#EEE7DF;
+      --gold:#C9A86A;
+      --ink:#3A302C;
+      --font-display:'Playfair Display', serif;
+      --font-script:'Cormorant Garamond', serif;
+      --font-body:'Poppins', 'Lato', sans-serif;
+    }
+    html{margin:0;padding:0;overflow-x:hidden;max-width:100%}
+    body{margin:0;padding:0;background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+    a{color:var(--gold)}
+    a:hover{color:#b3915a}
+    @media (max-width:768px){
+      #reflect-section{padding-top:46px !important;padding-bottom:46px !important}
+      #reflect-section > div{gap:30px !important}
+      #reflect-cols{gap:22px !important}
+      #reflect-left{gap:18px !important}
+      #reflect-list{gap:13px !important}
+      #vision-section{padding-top:46px !important;padding-bottom:46px !important}
+      #vision-section > div{gap:30px !important}
+      #vision-list{gap:14px !important}
+      #results-grid{gap:14px !important}
+      #story-section{padding-top:46px !important;padding-bottom:46px !important}
+      #story-section > div{gap:30px !important}
+      #story-text{gap:13px !important}
+      #reflect-card{margin-top:40px !important}
+      #vision-close{margin-top:6px !important}
+      #fit-section{padding-top:46px !important;padding-bottom:46px !important}
+      #fit-section > div{gap:30px !important}
+      #fit-grid{gap:20px !important}
+      #offer-section{padding-top:46px !important;padding-bottom:46px !important}
+      #offer-section > div{gap:30px !important}
+      #offer-grid{gap:18px !important}
+      #modules-section{padding-top:46px !important;padding-bottom:46px !important}
+      #modules-section > div{gap:30px !important;justify-content:center !important}
+      #modules-list > div{padding-top:16px !important;padding-bottom:16px !important;gap:16px !important}
+      #results-section{padding-top:46px !important;padding-bottom:46px !important}
+      #results-section > div{gap:30px !important}
+      #why-section{padding-top:46px !important;padding-bottom:46px !important}
+      #why-section > div{gap:30px !important}
+      #why-stats{gap:24px !important}
+      #testimonials-section{padding-top:46px !important;padding-bottom:46px !important}
+      #testimonials-section > div{gap:30px !important}
+      #testimonials-grid{grid-template-columns:1fr !important;gap:18px !important}
+      #faq-section{padding-top:46px !important;padding-bottom:46px !important}
+      #faq-section > div{gap:30px !important}
+      #cta-section{padding-top:52px !important;padding-bottom:52px !important}
+      #cta-section > div{gap:40px !important}
+      #pricing-section{padding-top:46px !important;padding-bottom:46px !important}
+      #pricing-section > div{gap:30px !important}
+      #footer-section{padding:40px 20px 24px !important}
+      #footer-section > div{gap:22px !important}
+      #footer-links{gap:18px !important}
+    }
+    @media (max-width:480px){
+      #hero-photo-frame{max-height:28vh !important;width:auto !important;margin:0 auto !important}
+      #hero-section{padding-top:14px !important;padding-bottom:48px !important}
+      #hero-grid{gap:18px !important}
+      #hero-text-col{gap:10px !important}
+      #hero-eyebrow{margin-bottom:0}
+      #hero-description{display:none}
+      #corner-tl,#corner-tr,#corner-bl,#corner-br{width:34px !important;height:34px !important}
+      #corner-bl,#corner-br{bottom:8px !important}
+    }
+    @media (min-width:1024px){
+      #reflect-cols{flex-direction:row !important;align-items:flex-start !important;text-align:left !important;gap:64px !important}
+      #reflect-left{align-items:flex-start !important;text-align:left !important;flex:1 1 0 !important}
+      #reflect-list{flex:1 1 0 !important;max-width:none !important;margin-top:8px !important}
+      #vision-list{display:grid !important;grid-template-columns:1fr 1fr !important;grid-template-rows:repeat(4,auto) !important;grid-auto-flow:column !important;column-gap:48px !important;row-gap:22px !important;max-width:900px !important}
+    }
+    @media (min-width:800px){
+      #story-text{order:1 !important}
+      #story-photo{order:2 !important}
+    }
+    @media (min-width:768px){
+      #results-grid{grid-template-columns:repeat(4,1fr) !important}
+    }
+    @media (max-width:480px){
+      #story-photo-frame{max-height:35vh !important;width:auto !important;margin:0 auto !important}
+    }
+  </style>
+</helmet>
+
+<section id="hero-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:56px 20px 64px;display:flex;justify-content:center;overflow:hidden;position:relative">
+  <img id="corner-tl" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;top:10px;left:10px;width:96px;height:96px;object-fit:contain;pointer-events:none">
+  <img id="corner-tr" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;top:10px;right:10px;width:96px;height:96px;object-fit:contain;transform:scaleX(-1);pointer-events:none">
+  <img id="corner-bl" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;bottom:10px;left:10px;width:96px;height:96px;object-fit:contain;transform:scaleY(-1);pointer-events:none">
+  <img id="corner-br" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;bottom:10px;right:10px;width:96px;height:96px;object-fit:contain;transform:scale(-1,-1);pointer-events:none">
+
+  <div id="hero-grid" style="width:100%;max-width:1200px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:48px;align-items:center">
+
+    <div id="hero-text-col" style="display:flex;flex-direction:column;gap:22px;order:2">
+      <div id="hero-eyebrow" style="display:flex;align-items:center;gap:12px">
+        <span style="font-family:var(--font-body);font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:500">Mentorski program</span>
+      </div>
+
+      <h1 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.05;font-size:clamp(40px,7vw,68px)">
+        <span style="font-family: var(--font-script); font-style: italic; font-weight: 400; color: var(--gold); font-size: 1.45em; display: inline-block">Beauty</span><br>
+        Business Starter
+      </h1>
+
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink);font-size:clamp(18px,2.4vw,22px);font-weight:400;line-height:1.5;max-width:52ch">
+        Izgradi beauty biznis koji ti donosi stabilne klijente, sigurnost i slobodu.
+      </p>
+
+      <p id="hero-description" style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.78;font-size:16px;font-weight:300;line-height:1.7;max-width:56ch">
+        Program za žene koje žele da otvore ili razviju svoj beauty biznis uz jasne korake, podršku i iskustvo nekoga ko je sve to već prošao.
+      </p>
+
+      <div style="margin-top:12px">
+        <a href="https://forms.gle/jX2LSnXre7H7xbgf7" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);font-family:var(--font-body);font-size:15px;font-weight:500;letter-spacing:0.03em;padding:17px 34px;border-radius:6px;text-decoration:none;border:1px solid var(--ink)" style-hover="background:transparent;color:var(--ink)">
+          Prijavi se za program
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="order:1;position:relative;display:flex;justify-content:center;width:100%;max-width:100%;box-sizing:border-box;padding:0 18px">
+      <div style="position:relative;width:100%;max-width:440px">
+        <div id="hero-photo-frame" style="position:relative;width:100%;aspect-ratio:3/4;border-radius:220px 220px 4px 4px;overflow:hidden;background:var(--card);box-shadow:0 24px 48px rgba(58,48,44,0.28)">
+          <image-slot id="hero-portrait" shape="rect" fit="cover" src="uploads/image5.jpeg" placeholder="portret žene — vlasnice/mentorke" style="width:100%;height:100%"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(248,246,242,0) 55%, rgba(58,48,44,0.28) 100%);pointer-events:none"></div>
+          <div style="position:absolute;inset:0;border-radius:220px 220px 4px 4px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.4);pointer-events:none"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="reflect-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center;position:relative">
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;gap:28px">
+
+    <div id="reflect-cols" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:36px;text-align:center">
+
+      <div id="reflect-left" style="display:flex;flex-direction:column;gap:28px;align-items:center;text-align:center">
+        <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px)">
+          Da li si nekada pomislila...
+        </h2>
+
+        <p style="margin:0;font-family:var(--font-script);font-style:italic;color:var(--gold);font-size:clamp(30px,4.5vw,48px);line-height:1.25;max-width:16ch">
+          "Odakle uopšte da krenem?"
+        </p>
+
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.75;font-size:17px;font-weight:400;letter-spacing:0.02em">
+          Ili možda...
+        </p>
+      </div>
+
+      <ul id="reflect-list" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;text-align:left;max-width:560px;width:100%">
+        <li style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:20px;height:1px;background:var(--gold);margin-top:14px;flex-shrink:0"></span>
+          <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Imam talenat, ali nisam sigurna kako da napravim ozbiljan biznis.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:20px;height:1px;background:var(--gold);margin-top:14px;flex-shrink:0"></span>
+          <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Plašim se da napravim greške koje će me koštati vremena i novca.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:20px;height:1px;background:var(--gold);margin-top:14px;flex-shrink:0"></span>
+          <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Ne znam kako da privučem prve klijentkinje.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:20px;height:1px;background:var(--gold);margin-top:14px;flex-shrink:0"></span>
+          <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Nisam sigurna kako da formiram cene.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:20px;height:1px;background:var(--gold);margin-top:14px;flex-shrink:0"></span>
+          <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Imam previše informacija i više ne znam kome da verujem.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:20px;height:1px;background:var(--gold);margin-top:14px;flex-shrink:0"></span>
+          <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Želim salon u kojem ću uživati da radim, a ne posao koji će me potpuno iscrpeti.</span>
+        </li>
+      </ul>
+
+    </div>
+
+    <div id="reflect-card" style="margin-top:64px;width:100%;max-width:820px;background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:4px;padding:clamp(32px,6vw,56px) clamp(24px,6vw,64px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box;text-align:center">
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink);font-size:17px;font-weight:400;line-height:1.6">
+        Ako si se pronašla u ovome, želim da znaš jedno.
+      </p>
+      <p style="margin:0;font-family:var(--font-display);color:var(--gold);font-size:clamp(26px,3.6vw,34px);font-weight:600;line-height:1.2">
+        Nisi jedina.
+      </p>
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.85;font-size:17px;font-weight:300;line-height:1.6">
+        Svaka uspešna beauty preduzetnica bila je upravo tu gde si ti danas.<br>
+        Razlika je samo u tome što su neke morale sve da nauče na teži način.
+      </p>
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink);font-size:17px;font-weight:500;line-height:1.6">
+        Ja želim da ti to putovanje bude mnogo lakše.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="vision-section" style="width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center;position:relative;overflow:hidden">
+  <image-slot id="vision-bg-photo" shape="rect" fit="cover" src="uploads/image4-1b773ce5.jpeg" placeholder="enterijer sa neonskim natpisom good hair good mood" style="position:absolute;inset:0;width:100%;height:100%;z-index:0mask-image:linear-gradient(180deg, transparent 0%, black 100px, black calc(100% - 100px), transparent 100%);-webkit-mask-image:linear-gradient(180deg, transparent 0%, black 100px, black calc(100% - 100px), transparent 100%);"></image-slot>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(248,246,242,0.7) 0%, rgba(248,246,242,0.6) 100%);z-index:1"></div>
+
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2">
+    <div style="width:100%;background:rgba(255,255,255,0.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.5);border-radius:8px;box-shadow:0 30px 60px -30px rgba(58,48,44,0.25);padding:clamp(36px,5vw,56px);display:flex;flex-direction:column;align-items:center;gap:48px;box-sizing:border-box">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center;max-width:20ch">
+      Zamisli da za nekoliko meseci...
+    </h2>
+
+    <ul id="vision-list" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px;width:100%;max-width:560px">
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Znaš tačno šta nudiš i kome.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Imaš jasne cene iza kojih stojiš.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Privlačiš klijentkinje koje cene tvoj rad.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Ne spuštaš cenu da bi dobila termin.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Imaš profesionalan Instagram koji radi za tebe.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Znaš kako da vodiš komunikaciju sa klijentima.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Postavljaš granice bez osećaja krivice.</span>
+      </li>
+      <li style="display:flex;gap:14px;align-items:flex-start">
+        <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.6;font-weight:300">Imaš plan razvoja svog biznisa.</span>
+      </li>
+    </ul>
+
+    <div id="vision-close" style="display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;margin-top:8px">
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.75;font-size:17px;font-weight:400">To nije slučajnost.</p>
+      <p style="margin:0;font-family:var(--font-display);color:var(--gold);font-size:clamp(26px,3.6vw,34px);font-weight:600;line-height:1.2">To je rezultat dobrih temelja.</p>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="story-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1120px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:48px;align-items:center">
+
+    <div id="story-text" style="display:flex;flex-direction:column;gap:20px;order:2">
+      <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px)">Moja priča</h2>
+
+      <div style="display:flex;flex-direction:column;gap:14px;font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.5;font-weight:300">
+        <p style="margin:0">Ja sam Olga Lazić.<br>Frizer i šminker sa više od 18 godina iskustva.</p>
+
+        <p style="margin:0">Tokom svoje karijere radila sam sa stotinama žena, vodila sopstveni salon, gradila tim, prolazila kroz uspone, padove i donosila odluke koje su me oblikovale kao preduzetnicu.</p>
+
+        <p style="margin:0">A onda sam donela jednu od najvećih odluka u životu.<br>Preselila sam se sa porodicom u Švajcarsku.</p>
+
+        <p style="margin:0">Nova država.<br>Novi jezik.<br>Novi početak.<br>Bez poznanstava.<br>Bez izgrađene baze klijenata.</p>
+
+        <p style="margin:0">Ponovo sam krenula od nule.</p>
+
+        <p style="margin:0">I upravo tada sam shvatila koliko je važno imati sistem.<br>Koliko je važno razumeti biznis, a ne samo svoj zanat.</p>
+
+        <p style="margin:0">Beauty Business Starter nastao je iz mog iskustva.<br>Iz svih grešaka koje sam napravila.<br>Iz svih lekcija koje sam naučila.<br>I iz želje da drugim ženama skratim put do uspeha.</p>
+      </div>
+    </div>
+
+    <div id="story-photo" style="order:1;position:relative;display:flex;justify-content:center;width:100%;max-width:100%;box-sizing:border-box;padding:0 18px">
+      <div style="position:relative;width:100%;max-width:440px">
+        <div id="story-photo-frame" style="position:relative;width:100%;aspect-ratio:3/4;border-radius:220px 220px 4px 4px;overflow:hidden;background:var(--card);box-shadow:0 24px 48px rgba(58,48,44,0.28)">
+          <image-slot id="story-portrait" shape="rect" fit="cover" src="uploads/image6.jpeg" placeholder="portret žene — opušteniji pogled u stranu" style="width:100%;height:100%"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(248,246,242,0) 55%, rgba(58,48,44,0.28) 100%);pointer-events:none"></div>
+          <div style="position:absolute;inset:0;border-radius:220px 220px 4px 4px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.4);pointer-events:none"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="fit-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;gap:48px">
+
+    <div id="fit-grid" style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:32px">
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:4px;padding:clamp(28px,5vw,44px);display:flex;flex-direction:column;gap:24px;box-sizing:border-box">
+        <h3 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;font-size:clamp(22px,2.6vw,28px)">Program je za tebe ako...</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300">Želiš da otvoriš svoj beauty salon.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300">Tek si otvorila salon.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300">Radiš od kuće i želiš ozbiljan biznis.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300">Imaš znanje, ali nemaš sistem.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300">Želiš da izgradiš prepoznatljiv brend.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--gold);font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✓</span>
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:16px;line-height:1.6;font-weight:300">Spremna si da radiš na sebi i svom poslu.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div style="background:var(--card);border-radius:4px;padding:clamp(28px,5vw,44px);display:flex;flex-direction:column;gap:24px;box-sizing:border-box">
+        <h3 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;font-size:clamp(22px,2.6vw,28px)">Program nije za tebe ako...</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--ink);opacity:0.6;font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✕</span>
+            <span style="font-family:var(--font-body);color:var(--ink);opacity:0.85;font-size:16px;line-height:1.6;font-weight:300">Tražiš brza rešenja bez rada.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--ink);opacity:0.6;font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✕</span>
+            <span style="font-family:var(--font-body);color:var(--ink);opacity:0.85;font-size:16px;line-height:1.6;font-weight:300">Očekuješ rezultate preko noći.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--ink);opacity:0.6;font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✕</span>
+            <span style="font-family:var(--font-body);color:var(--ink);opacity:0.85;font-size:16px;line-height:1.6;font-weight:300">Ne želiš da primenjuješ zadatke.</span>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--ink);opacity:0.6;font-size:17px;font-weight:300;line-height:1.6;flex-shrink:0">✕</span>
+            <span style="font-family:var(--font-body);color:var(--ink);opacity:0.85;font-size:16px;line-height:1.6;font-weight:300">Tražiš nekoga ko će posao uraditi umesto tebe.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p style="margin:0;font-family:var(--font-script);font-style:italic;color:var(--gold);font-size:clamp(28px,3.6vw,38px);line-height:1.5;text-align:center;max-width:44ch">
+      Verujem da uspešan biznis nastaje kada se znanje spoji sa doslednom primenom.
+    </p>
+
+  </div>
+</section>
+
+<section id="offer-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;gap:48px">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center">Šta dobijaš?</h2>
+
+    <div id="offer-grid" style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px">
+
+      <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(26px,4vw,36px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><rect x="4" y="5" width="20" height="18" rx="2" stroke="#C9A86A" stroke-width="1.6"></rect><line x1="14" y1="5" x2="14" y2="23" stroke="#C9A86A" stroke-width="1.6"></line></svg>
+        <h3 style="margin:0;font-family:var(--font-body);color:var(--ink);font-weight:600;font-size:18px">Detaljno osmišljeni moduli</h3>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.68;font-size:15px;line-height:1.6;font-weight:300">Program koji te vodi korak po korak.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(26px,4vw,36px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#C9A86A" stroke-width="1.6"></circle><polygon points="11,9 20,14 11,19" fill="#C9A86A"></polygon></svg>
+        <h3 style="margin:0;font-family:var(--font-body);color:var(--ink);font-weight:600;font-size:18px">Video lekcije</h3>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.68;font-size:15px;line-height:1.6;font-weight:300">Možeš da ih gledaš svojim tempom.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(26px,4vw,36px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><rect x="3" y="8" width="14" height="12" rx="2" stroke="#C9A86A" stroke-width="1.6"></rect><polygon points="17,11 24,7 24,21 17,17" stroke="#C9A86A" stroke-width="1.6" stroke-linejoin="round"></polygon></svg>
+        <h3 style="margin:0;font-family:var(--font-body);color:var(--ink);font-weight:600;font-size:18px">Nedeljni Zoom pozivi</h3>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.68;font-size:15px;line-height:1.6;font-weight:300">Odgovori na pitanja i dodatna podrška.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(26px,4vw,36px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><rect x="4" y="5" width="20" height="14" rx="4" stroke="#C9A86A" stroke-width="1.6"></rect><polygon points="9,19 9,24 14,19" fill="#C9A86A"></polygon></svg>
+        <h3 style="margin:0;font-family:var(--font-body);color:var(--ink);font-weight:600;font-size:18px">Telegram zajednica</h3>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.68;font-size:15px;line-height:1.6;font-weight:300">Mesto gde nisi sama.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(26px,4vw,36px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><rect x="5" y="3" width="18" height="22" rx="2" stroke="#C9A86A" stroke-width="1.6"></rect><line x1="9" y1="9" x2="19" y2="9" stroke="#C9A86A" stroke-width="1.4"></line><polyline points="9,14.5 12,17.5 19,10.5" stroke="#C9A86A" stroke-width="1.4" fill="none"></polyline><line x1="9" y1="21" x2="19" y2="21" stroke="#C9A86A" stroke-width="1.4"></line></svg>
+        <h3 style="margin:0;font-family:var(--font-body);color:var(--ink);font-weight:600;font-size:18px">Zadaci nakon svakog modula</h3>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.68;font-size:15px;line-height:1.6;font-weight:300">Jer se rezultati ne postižu samo gledanjem.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(26px,4vw,36px);display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><path d="M4 8 L4 22 L24 22 L24 10 L14 10 L12 8 Z" stroke="#C9A86A" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+        <h3 style="margin:0;font-family:var(--font-body);color:var(--ink);font-weight:600;font-size:18px">Radni materijali i check liste</h3>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.68;font-size:15px;line-height:1.6;font-weight:300">Da sve što naučiš odmah primeniš u svom poslu.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="modules-section" style="width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(180deg, #F8F6F2 0px, #F8F6F2 160px, #F8F6F2 calc(100% - 160px), #EEE7DF 100%)">
+  <image-slot id="modules-bg-photo" shape="rect" fit="cover" src="uploads/image0-87ff77ac.jpeg" placeholder="bela stolica u arch niši, mermerni zidovi" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;transform:scaleX(-1)mask-image:linear-gradient(180deg, transparent 0%, black 100px, black calc(100% - 100px), transparent 100%);-webkit-mask-image:linear-gradient(180deg, transparent 0%, black 100px, black calc(100% - 100px), transparent 100%);"></image-slot>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(248,246,242,0.7) 0%, rgba(248,246,242,0.6) 85%, rgba(238,231,223,0.7) 100%);z-index:1"></div>
+
+  <div style="width:100%;max-width:1120px;display:flex;justify-content:flex-start;position:relative;z-index:2">
+    <div style="width:100%;max-width:640px;background:rgba(255,255,255,0.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.5);border-radius:8px;box-shadow:0 30px 60px -30px rgba(58,48,44,0.25);padding:clamp(36px,5vw,56px);display:flex;flex-direction:column;align-items:center;gap:48px;box-sizing:border-box">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center">Šta ćemo raditi kroz program?</h2>
+
+    <div id="modules-list" style="width:100%;display:flex;flex-direction:column">
+      <sc-for list="{{ modules }}" as="mod" hint-placeholder-count="11">
+        <div style="display:flex;align-items:baseline;gap:24px;padding:22px 4px;border-bottom:1px solid rgba(201,168,106,0.3)">
+          <span style="font-family:var(--font-display);color:var(--gold);font-weight:600;font-size:clamp(24px,3vw,34px);width:48px;flex-shrink:0;line-height:1">{{ mod.num }}</span>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;font-weight:600;line-height:1.4">{{ mod.title }}</span>
+            <span style="font-family:var(--font-body);color:var(--ink);opacity:0.65;font-size:14px;font-weight:300;line-height:1.5">{{ mod.sub }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="results-section" style="background:var(--card);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:48px">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center;max-width:22ch">Šta ćeš imati kada završiš program?</h2>
+
+    <div id="results-grid" style="width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#A8874F" stroke-width="1"></circle><circle cx="8" cy="8" r="0.7" fill="#A8874F"></circle></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Jasnu strategiju razvoja.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><polygon points="8,1.5 14.5,8 8,14.5 1.5,8" stroke="#A8874F" stroke-width="1"></polygon></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Profesionalan brend.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="#A8874F" stroke-width="1"></rect><circle cx="8" cy="8" r="2.6" stroke="#A8874F" stroke-width="1"></circle></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Uređen Instagram.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#A8874F" stroke-width="1"></circle><line x1="8" y1="4.5" x2="8" y2="11.5" stroke="#A8874F" stroke-width="1"></line></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Definisane cene.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2.5" width="13" height="9" rx="3" stroke="#A8874F" stroke-width="1"></rect><polyline points="5,11.5 5,14 7.5,11.5" stroke="#A8874F" stroke-width="1" fill="none"></polyline></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Sigurnost u komunikaciji.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2.5" width="13" height="12" rx="1.5" stroke="#A8874F" stroke-width="1"></rect><line x1="1.5" y1="6" x2="14.5" y2="6" stroke="#A8874F" stroke-width="1"></line></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Plan za narednih godinu dana.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><polygon points="8,1.3 9.8,5.6 14.5,6 10.9,9 12,13.7 8,11.2 4,13.7 5.1,9 1.5,6 6.2,5.6" stroke="#A8874F" stroke-width="1" stroke-linejoin="round"></polygon></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Više samopouzdanja.</span>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 16 16" fill="none"><rect x="5" y="2" width="6" height="9" stroke="#A8874F" stroke-width="1"></rect><line x1="1.5" y1="14" x2="14.5" y2="14" stroke="#A8874F" stroke-width="1"></line></svg></span>
+        <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.5;font-weight:400">Biznis koji ima čvrste temelje.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="why-section" style="width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(180deg, #EEE7DF 0px, #F8F6F2 160px, #F8F6F2 calc(100% - 160px), #F8F6F2 100%)">
+  <image-slot id="why-bg-photo" shape="rect" fit="cover" src="uploads/image1.jpeg" placeholder="red arch ogledala sa frizerskim stolicama, topla rasveta" style="position:absolute;inset:0;width:100%;height:100%;z-index:0mask-image:linear-gradient(180deg, transparent 0%, black 100px, black calc(100% - 100px), transparent 100%);-webkit-mask-image:linear-gradient(180deg, transparent 0%, black 100px, black calc(100% - 100px), transparent 100%);"></image-slot>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(238,231,223,0.7) 0%, rgba(248,246,242,0.6) 15%, rgba(248,246,242,0.6) 100%);z-index:1"></div>
+
+  <div style="width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2">
+    <div style="width:100%;background:rgba(255,255,255,0.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.5);border-radius:8px;box-shadow:0 30px 60px -30px rgba(58,48,44,0.25);padding:clamp(36px,5vw,56px);display:flex;flex-direction:column;align-items:center;gap:48px;box-sizing:border-box">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center">Zašto baš ja?</h2>
+
+    <div id="why-stats" style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;text-align:center">
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <span style="font-family:var(--font-display);color:var(--gold);font-weight:600;font-size:clamp(40px,5vw,56px);line-height:1">18+</span>
+        <span style="font-family:var(--font-body);color:var(--ink);opacity:0.75;font-size:15px;font-weight:400">godina iskustva</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <span style="font-family:var(--font-display);color:var(--gold);font-weight:600;font-size:clamp(40px,5vw,56px);line-height:1">200+</span>
+        <span style="font-family:var(--font-body);color:var(--ink);opacity:0.75;font-size:15px;font-weight:400">zadovoljnih klijentkinja</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <span style="font-family:var(--font-display);color:var(--gold);font-weight:600;font-size:clamp(40px,5vw,56px);line-height:1">2</span>
+        <span style="font-family:var(--font-body);color:var(--ink);opacity:0.75;font-size:15px;font-weight:400">zemlje, 2 tržišta (Srbija i Švajcarska)</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;font-family:var(--font-body);color:var(--ink);font-size:17px;line-height:1.5;font-weight:300;text-align:center;max-width:640px">
+      <p style="margin:0">Ne učim te teoriji.<br>Učim te onome što sam godinama živela.</p>
+      <p style="margin:0">Vodila sam sopstveni salon.<br>Radila sa stotinama zadovoljnih klijentkinja.<br>Gradila posao u Srbiji.<br>A zatim sve ponovo izgradila u Švajcarskoj.</p>
+      <p style="margin:0">Znam kako izgleda kada počinješ.<br>Ali znam i kako izgleda kada napraviš sistem koji radi za tebe.</p>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="testimonials-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;gap:48px">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center">Iskustva žena koje su radile sa mnom</h2>
+
+    <div id="testimonials-grid" style="width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:28px">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="4">
+        <div style="background:var(--card);border:1px solid rgba(201,168,106,0.35);border-radius:6px;padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:18px;box-sizing:border-box">
+          <span style="font-family:var(--font-display);color:var(--gold);font-size:48px;line-height:1;font-weight:600">"</span>
+          <p style="margin:0;font-family:var(--font-body);color:var(--ink);font-size:15px;line-height:1.7;font-weight:300">{{ t.quote }}</p>
+          <div style="display:flex;align-items:center;gap:14px;margin-top:8px">
+            <span style="width:44px;height:44px;border-radius:50%;background:var(--bg);border:1px solid rgba(201,168,106,0.5);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);color:var(--gold);font-size:14px;font-weight:600;flex-shrink:0">{{ t.initials }}</span>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-family:var(--font-body);color:var(--ink);font-size:15px;font-weight:600">{{ t.name }}</span>
+              <span style="font-family:var(--font-body);color:var(--ink);opacity:0.65;font-size:14px;font-weight:300">{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</section>
+
+<section id="faq-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;gap:48px">
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center">Najčešća pitanja</h2>
+
+    <div style="width:100%;display:flex;flex-direction:column">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="width:100%;border-bottom:1px solid rgba(201,168,106,0.35)">
+          <div onClick="{{ f.toggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 4px;cursor:pointer">
+            <span style="font-family:var(--font-body);color:var(--ink);font-size:17px;font-weight:600;line-height:1.4">{{ f.q }}</span>
+            <span style="flex-shrink:0;width:28px;height:28px;border:1px solid rgba(201,168,106,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;transform:{{ f.rotate }}">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#C9A86A" stroke-width="1"></path></svg>
+            </span>
+          </div>
+          <div style="overflow:hidden;max-height:{{ f.maxHeight }};opacity:{{ f.opacity }};transition:max-height 0.35s ease, opacity 0.3s ease">
+            <p style="margin:0;padding:0 30px 22px 4px;font-family:var(--font-body);color:var(--ink);opacity:0.7;font-size:15px;line-height:1.7;font-weight:300">{{ f.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</section>
+
+<section id="pricing-section" style="background:var(--bg);width:100%;box-sizing:border-box;padding:72px 20px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;gap:28px">
+
+    <span style="font-family:var(--font-body);color:var(--gold);font-size:13px;font-weight:600;letter-spacing:0.12em">USKORO</span>
+
+    <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px);text-align:center">Uskoro se otvara novi krug prijava</h2>
+
+    <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.75;font-size:16px;font-weight:300;line-height:1.7;text-align:center;max-width:52ch">Ako želiš da budeš deo sledeće generacije, popuni prijavu i javiću ti se čim prijave budu otvorene.</p>
+
+    <a href="https://forms.gle/jX2LSnXre7H7xbgf7" target="_blank" rel="noopener" style="margin-top:12px;display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);font-family:var(--font-body);font-size:15px;font-weight:500;letter-spacing:0.03em;padding:17px 34px;border-radius:6px;text-decoration:none;border:1px solid var(--ink)" style-hover="background:transparent;color:var(--ink)">
+      PRIJAVI SE ZA PROGRAM
+      <span aria-hidden="true">→</span>
+    </a>
+
+  </div>
+</section>
+
+<section id="cta-section" style="background:var(--card);width:100%;box-sizing:border-box;padding:88px 20px;display:flex;justify-content:center;position:relative;overflow:hidden">
+  <img id="corner-tl-cta" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;top:10px;left:10px;width:96px;height:96px;object-fit:contain;pointer-events:none">
+  <img id="corner-tr-cta" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;top:10px;right:10px;width:96px;height:96px;object-fit:contain;transform:scaleX(-1);pointer-events:none">
+  <img id="corner-bl-cta" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;bottom:10px;left:10px;width:96px;height:96px;object-fit:contain;transform:scaleY(-1);pointer-events:none">
+  <img id="corner-br-cta" src="uploads/corner-ornament-gold.png" alt="" style="position:absolute;bottom:10px;right:10px;width:96px;height:96px;object-fit:contain;transform:scale(-1,-1);pointer-events:none">
+
+  <div style="width:100%;max-width:760px;display:flex;flex-direction:column;align-items:center;gap:64px;position:relative">
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center">
+      <h2 style="margin:0;font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.2;font-size:clamp(28px,4vw,42px)">Prijava za program</h2>
+      <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.78;font-size:16px;font-weight:300;line-height:1.7;max-width:60ch">Želim da svaka polaznica iz ovog programa izvuče maksimum. Zbog toga ne primam neograničen broj učesnica. Pre prijave potrebno je da popuniš kratak upitnik. Na osnovu tvojih odgovora proceniću da li je ovaj program pravi izbor za tebe i da li mogu da ti pružim podršku koja će doneti konkretne rezultate. Ako procenim da smo dobar spoj za saradnju, kontaktiraću te putem e-maila sa svim narednim informacijama.</p>
+      <div style="margin-top:8px">
+        <a href="https://forms.gle/jX2LSnXre7H7xbgf7" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);font-family:var(--font-body);font-size:15px;font-weight:500;letter-spacing:0.03em;padding:17px 34px;border-radius:6px;text-decoration:none;border:1px solid var(--ink)" style-hover="background:transparent;color:var(--ink)">
+          POPUNI PRIJAVU
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="width:60px;height:1px;background:rgba(201,168,106,0.5)"></div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+      <p style="margin:0;font-family:var(--font-display);font-style:italic;color:var(--ink);font-size:clamp(24px,3.2vw,32px);line-height:1.4;font-weight:500">Možda je upravo danas dan kada praviš prvi ozbiljan korak.</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.78;font-size:17px;font-weight:300;line-height:1.7">Ne moraš da znaš sve.</p>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.78;font-size:17px;font-weight:300;line-height:1.7">Ne moraš da budeš savršena.</p>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.78;font-size:17px;font-weight:300;line-height:1.7">Dovoljno je da doneseš odluku da više ne želiš da gradiš svoj biznis sama.</p>
+        <p style="margin:0;font-family:var(--font-body);color:var(--ink);opacity:0.78;font-size:17px;font-weight:300;line-height:1.7">Ja ću biti tu da te vodim kroz svaki korak.</p>
+      </div>
+      <p style="margin-top:8px;font-family:var(--font-display);color:var(--gold);font-weight:600;font-size:clamp(24px,3.2vw,32px);line-height:1.3">Dobro došla u Beauty Business Starter.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer id="footer-section" style="background:var(--ink);width:100%;box-sizing:border-box;padding:56px 20px 32px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;gap:32px">
+
+    <p style="margin: 0; font-family: var(--font-display); color: #F8F6F2; font-weight: 500; font-size: 30px; letter-spacing: 0.02em">Beauty Business Starter</p>
+
+    <div id="footer-links" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px">
+      <a href="mailto:olgalazic.va@gmail.com" style="display:flex;align-items:center;gap:8px;font-family:var(--font-body);color:#F8F6F2;opacity:0.75;font-size:15px;font-weight:300;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2" stroke="#F8F6F2" stroke-width="1"></rect><path d="M3 6.5L12 13L21 6.5" stroke="#F8F6F2" stroke-width="1"></path></svg>
+        olgalazic.va@gmail.com
+      </a>
+      <a href="tel:+41767425084" style="display:flex;align-items:center;gap:8px;font-family:var(--font-body);color:#F8F6F2;opacity:0.75;font-size:15px;font-weight:300;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 006 6l1.5-2 4 1.5v3c0 1-1 1.7-2 1.6C11.5 19.8 4.2 12.5 3.4 5.5c-.1-1 .6-2 1.6-2h1.5z" stroke="#F8F6F2" stroke-width="1"></path></svg>
+        +41 76 742 5084
+      </a>
+      <a href="https://www.instagram.com/olga_lazic/" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;gap:8px;font-family:var(--font-body);color:#F8F6F2;opacity:0.75;font-size:15px;font-weight:300;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="#F8F6F2" stroke-width="1"></rect><circle cx="12" cy="12" r="4.2" stroke="#F8F6F2" stroke-width="1"></circle><circle cx="17.3" cy="6.7" r="1" fill="#F8F6F2"></circle></svg>
+        Instagram
+      </a>
+      <a href="https://forms.gle/jX2LSnXre7H7xbgf7" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#3A302C;font-family:var(--font-body);font-size:14px;font-weight:500;letter-spacing:0.02em;padding:11px 22px;border-radius:6px;text-decoration:none" style-hover="opacity:0.85">
+        Prijavi se za program
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <p style="margin:0;font-family:var(--font-body);color:#F8F6F2;opacity:0.45;font-size:13px;font-weight:300">© 2026 Olga Lazić</p>
+
+  </div>
+</footer>
+
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#EEE7DF"></rect><circle cx="100" cy="85" r="45" fill="#C9A86A" opacity="0.6"></circle><text x="100" y="160" font-family="serif" font-size="20" fill="#3A302C" text-anchor="middle">Beauty</text></svg>
+</template>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:760}}">class Component extends DCLogic {
+  state = { openFaq: -1 };
+  renderVals() {
+    const faqData = [
+      { q: 'Da li mogu da se prijavim ako još nemam salon?', a: 'Da. Program je napravljen upravo tako da ti pomogne da od samog početka postaviš dobre temelje.' },
+      { q: 'Koliko traje program?', a: '12 nedelja.' },
+      { q: 'Da li mogu da gledam lekcije kada meni odgovara?', a: 'Da. Sve lekcije ostaju dostupne tokom trajanja programa.' },
+      { q: 'Da li dobijam podršku?', a: 'Da. Pored video lekcija, imaćeš Zoom susrete i podršku u Telegram grupi.' },
+      { q: 'Koliko vremena treba da izdvojim?', a: 'Preporučujem nekoliko sati nedeljno kako bi mogla da pratiš lekcije i primeniš zadatke.' }
+    ];
+    return {
+      faqs: faqData.map((item, i) => ({
+        q: item.q,
+        a: item.a,
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
+        rotate: this.state.openFaq === i ? 'rotate(45deg)' : 'rotate(0deg)',
+        maxHeight: this.state.openFaq === i ? '200px' : '0px',
+        opacity: this.state.openFaq === i ? 1 : 0
+      })),
+      testimonials: [
+        { initials: 'DB', name: 'Dragana B.', role: '', quote: 'Kada sam otvorila salon bila sam puna želje, Olga mi je pomogla da postavim temelje - od organizacije posla do društvenih mreža. Njeni saveti i strategije za Instagram doneli su mi prve klijentkinje i stvorili poverenje u moj brend. Posle samo par meseci rada, ne samo da sam imala pune termine, već su mi se devojke same javljale da žele da rade kod mene u salonu! To je bio trenutak kada sam shvatila da rastem brže nego što sam zamišljala. Olga je podrška, motivacija i osoba koja te nauči kako da vodiš biznis sa sigurnošću i samopouzdanjem.' },
+        { initials: 'MS', name: 'Mateja Smiljanić', role: 'Tea Ms', quote: 'Rad sa Olgom mi je pomogao da postavim jasne cene i da konačno vrednujem svoj rad na pravi način. Uz njene savete unapredila sam znanje u kolorisanju i naučila kako da predstavim nove usluge na društvenim mrežama. Rezultat je da mi se klijentkinje same javljaju čim objavim novu ponudu!' },
+        { initials: 'MJ', name: 'Marija J.', role: '', quote: 'Tek sam krenula sa programom Beauty Business Starter i zaista sam srećna što sam donela ovu odluku. Svaki put kada sam se obratila Olgi, dobila sam konkretan i koristan savet, ali i podršku koja mi je bila potrebna. Zbog toga verujem da će mi ovaj program pomoći da svoj biznis od samog početka postavim na dobre temelje. Radujem se svemu što me čeka!' },
+        { initials: 'BS', name: 'Biljana Samardžić', role: 'beauty_studio_la_mia', quote: 'Iako već nekoliko godina uspešno vodim svoj salon, konsultacije sa Olgom su mi donele nove ideje i jasne smernice za društvene mreže. Olga je puna ideja, inovacija i iskustva i svakome bih preporučila njen program. Mnogo je lakše kada imaš nekoga ko će da te vodi i skrene ti pažnju na to šta je dobro i profitabilno, a šta nije. Srećno sa programom, ovo zaista nema cenu!' }
+      ],
+      modules: [
+        { num: '0', title: 'Vizija života i biznisa koji želiš da izgradiš', sub: 'Zašto uopšte gradiš salon.' },
+        { num: '1', title: 'Šta ljudi osete kada uđu kod tebe', sub: 'Identitet salona.' },
+        { num: '2', title: 'Tvoj salon nije za svakoga', sub: 'Idealna klijentkinja.' },
+        { num: '3', title: 'Ne prodaješ uslugu, već poverenje', sub: 'Standardi rada, autoritet i reputacija.' },
+        { num: '4', title: 'Pametna ponuda usluga', sub: 'Signature usluga i profitabilna ponuda.' },
+        { num: '5', title: 'Cene, granice i samopouzdanje', sub: 'Profitabilan salon i život koji želiš da živiš.' },
+        { num: '6', title: 'Od prvog klijenta do popunjenog rasporeda', sub: 'Kako dobiti prve klijentkinje i pretvoriti ih u preporuke.' },
+        { num: '7', title: 'Instagram za vlasnice beauty salona', sub: 'Postavljanje profila koji gradi poverenje.' },
+        { num: '8', title: 'Sadržaj koji privlači klijentkinje', sub: 'Sistem za kreiranje sadržaja koji prodaje.' },
+        { num: '9', title: 'Kako popuniti kalendar bez panike', sub: 'Šta radiš kada nema klijentkinja i kako gradiš biznis u tim trenucima.' },
+        { num: '10', title: 'Od vlasnice salona do vlasnice biznisa', sub: 'Osvrt, CEO način razmišljanja i plan rasta za narednih 90 dana.' }
+      ]
+    };
+  }
+}</script>
+</body>
+</html>
